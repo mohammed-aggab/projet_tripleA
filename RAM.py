@@ -12,5 +12,5 @@ def ram_info():
     print(f"Mémoire Total : {total_gb} Go")
     print(f"Utilisation : {mem.percent} %")
 
-if __name__ == "__ main __":
+if __name__=="__ main __":
     ram_info()
