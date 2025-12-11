@@ -1,7 +1,7 @@
 import psutil
 
 def cpu_info():
-    print("=== CPU ===")
+
 
     physical = psutil.cpu_count(logical = False)
     logical = psutil.cpu_count(logical = True)

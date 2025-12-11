@@ -3,7 +3,6 @@ import time
 
 
 def process_info():
-    print("=== Processus ===")
 
     time.sleep(1)
 

@@ -4,7 +4,7 @@ import sys
 
 
 def file_analys(folder_path):
-    print("=== Analyse de fichiers ===")
+
     print("Dossier analysé :", folder_path)
 
     path = Path(folder_path)

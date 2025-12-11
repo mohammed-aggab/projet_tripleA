@@ -1,7 +1,7 @@
 import psutil
 
 def ram_info():
-    print("=== Mémoire ===")
+
 
     mem = psutil.virtual_memory()
 

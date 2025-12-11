@@ -3,11 +3,14 @@ import io
 import contextlib
 from pathlib import Path
 
+
+
 import CPU
 import File
 import RAM
 import SYS
 import Processus
+import NETWORK
 
 
 
@@ -23,6 +26,8 @@ def monitor():
     RAM.ram_info()
     SYS.sys_info()
     Processus.process_info()
+    NETWORK.network_info()
+
 
 
 
@@ -63,7 +68,7 @@ def generate_dashboard():
     process_text = capture(Processus.process_info)
     files_text = capture(File.file_analys, folder)
 
-    network_text = "Réseau non implémenté<br>"
+    network_text = capture(NETWORK.network_info)
 
     # Lire le template HTML
     template_path = Path("template.html")
@@ -81,7 +86,7 @@ def generate_dashboard():
     output_path = Path("index.html")
     output_path.write_text(html, encoding="utf-8")
 
-    print("✅ Dashboard HTML généré : index.html")
+    print("✅Dashboard HTML généré : index.html")
 
 
 #            MAIN

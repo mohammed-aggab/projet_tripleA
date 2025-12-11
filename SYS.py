@@ -4,7 +4,7 @@ import socket
 from datetime import datetime
 
 def sys_info():
-    print("=== Système ===")
+
 
     hostname = socket.gethostname()
     print(f"Nom de la Machine : {hostname}")
@@ -25,11 +25,6 @@ def sys_info():
     users = psutil.users()
     print(f"Utilisateur Connectés : {len(users)}")
 
-    try :
-        ip = socket.gethostbyname(hostname)
-    except Exception:
-        ip = "Inconnue"
-    print(f"Adresse IP : {ip}")
-
+   
 if __name__=="__main__":
     sys_info()
