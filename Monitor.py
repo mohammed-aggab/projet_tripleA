@@ -60,10 +60,24 @@ def generate_dashboard():
 
     # Horodatage actuel
     timestamp = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    print("Timestamp généré :", timestamp)
+
+    # Chemins ABSOLUS pour être sûr qu'on touche les bons fichiers
+    base_dir = Path(__file__).resolve().parent
+    template_path = base_dir / "template.html"
+    output_path = base_dir / "index.html"
+
+    print("Template utilisé :", template_path)
+    print("Index généré   :", output_path)
 
     # Lire le template HTML
-    template_path = Path("template.html")
     html = template_path.read_text(encoding="utf-8")
+
+    # Vérifier que le placeholder existe bien
+    if "INSERT_TIMESTAMP" not in html:
+        print("⚠️ ATTENTION : 'INSERT_TIMESTAMP' n'est PAS dans template.html")
+    else:
+        print("✅ 'INSERT_TIMESTAMP' trouvé dans template.html")
 
     # Remplacements dans le template
     html = html.replace("INSERT_SYSTEM", system_text)
@@ -75,10 +89,9 @@ def generate_dashboard():
     html = html.replace("INSERT_TIMESTAMP", timestamp)
 
     # Écriture du fichier final
-    output_path = Path("index.html")
     output_path.write_text(html, encoding="utf-8")
 
-    print(" Dashboard HTML généré : index.html")
+    print("✅Dashboard HTML généré :", output_path)
 
 
 # ------------------------------
