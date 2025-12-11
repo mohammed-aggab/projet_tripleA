@@ -8,6 +8,7 @@
         min-height: 100vh;
         display: flex;
         flex-direction: column;
+        background-size: cover;
         
     }
 
@@ -45,6 +46,9 @@
         background: #2c2c2c;
         padding: 20px;
         text-align: center;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
     }
 
     /* GRID MAIN */
@@ -144,5 +148,9 @@
         details { height: 120px; }
         .header-logo {
             width: 45px;
+
+        }
+        .header-logo{
+            display: none;
         }
     }
