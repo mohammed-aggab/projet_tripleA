@@ -1,0 +1,31 @@
+    body {
+        font-family: Arial, sans-serif;
+        background: #1e1e1e;
+        color: white;
+        margin: 0;
+    }
+
+    header, footer {
+        background: #2c2c2c;
+        padding: 20px;
+        text-align: center;
+    }
+
+    main {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .dashboard {
+        display: grid;
+        grid-template-columns: repeat(3, 260px);
+        gap: 25px;
+    }
+
+    section {
+        background: #2a2a2a;
+        padding: 20px;
+        border-radius: 12px;
+        text-align: center;
+    }
