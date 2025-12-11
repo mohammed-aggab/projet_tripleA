@@ -14,7 +14,8 @@ def sys_info():
 
     boot_time = psutil.boot_time()
     boot_datetime = datetime.fromtimestamp(boot_time)
-    print(f"Heure de Démarrage : {boot_datetime.strftime("%Y - %m - %d %H : %M : %S")}")
+    print(f"Heure de Démarrage : {boot_datetime.strftime('%Y - %m - %d %H : %M : %S')}")
+
 
     now = datetime.now()
     seconds = int((now - boot_datetime).total_seconds())

@@ -2,8 +2,7 @@ import sys
 import io
 import contextlib
 from pathlib import Path
-
-
+from datetime import datetime
 
 import CPU
 import File
@@ -12,9 +11,9 @@ import SYS
 import Processus
 import NETWORK
 
-
-
-
+# ------------------------------
+# Monitor : affiche dans le terminal
+# ------------------------------
 def monitor():
     if len(sys.argv) > 1:
         folder = sys.argv[1]
@@ -29,33 +28,23 @@ def monitor():
     NETWORK.network_info()
 
 
-
-
-#   CAPTURER LES PRINT()
-
+# ------------------------------
+# Capturer le print() des modules
+# ------------------------------
 def capture(func, *args):
-    # On crée une boite vide pour stocker ce que print() affiche
+    # Crée une boite pour capturer print()
     boite = io.StringIO()
-
-    # Tout ce que print() écrit va aller dans la boite
     with contextlib.redirect_stdout(boite):
-        func(*args)   # On lance ta fonction (CPU, RAM, etc.)
-
-    # On récupère le texte de la boite
+        func(*args)   # Lance la fonction du module
     texte = boite.getvalue()
-
-    # On remplace les retours à la ligne par <br> pour le HTML
-    texte = texte.replace("\n", "<br>")
-    
+    texte = texte.replace("\n", "<br>")  # Remplace les sauts de ligne pour HTML
     return texte
 
 
-
-
-#   GÉNÉRER DASHBOARD HTML
-
+# ------------------------------
+# Générer le dashboard HTML
+# ------------------------------
 def generate_dashboard():
-    # même logique que ton monitor()
     if len(sys.argv) > 1:
         folder = sys.argv[1]
     else:
@@ -67,30 +56,34 @@ def generate_dashboard():
     ram_text = capture(RAM.ram_info)
     process_text = capture(Processus.process_info)
     files_text = capture(File.file_analys, folder)
-
     network_text = capture(NETWORK.network_info)
+
+    # Horodatage actuel
+    timestamp = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 
     # Lire le template HTML
     template_path = Path("template.html")
     html = template_path.read_text(encoding="utf-8")
 
-    # Remplacements
+    # Remplacements dans le template
     html = html.replace("INSERT_SYSTEM", system_text)
     html = html.replace("INSERT_CPU", cpu_text)
     html = html.replace("INSERT_RAM", ram_text)
     html = html.replace("INSERT_PROCESS", process_text)
     html = html.replace("INSERT_FILES", files_text)
     html = html.replace("INSERT_NETWORK", network_text)
+    html = html.replace("INSERT_TIMESTAMP", timestamp)
 
     # Écriture du fichier final
     output_path = Path("index.html")
     output_path.write_text(html, encoding="utf-8")
 
-    print("✅Dashboard HTML généré : index.html")
+    print(" Dashboard HTML généré : index.html")
 
 
-#            MAIN
-
+# ------------------------------
+# MAIN
+# ------------------------------
 if __name__ == "__main__":
-    monitor()             # Affiche dans le terminal 
-    generate_dashboard()  # Crée la page HTML
+    monitor()             # Affiche dans le terminal
+    generate_dashboard()  # Crée la page HTML avec horodatage
