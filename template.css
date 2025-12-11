@@ -1,11 +1,13 @@
+
     body {
         font-family: Arial, sans-serif;
-        background: #1e1e1e;
+        background-image: url(./image/stock-vector-abstract-waving-particle-technology-background-design-abstract-wave-moving-dots-flow-particles-hi-2128959116.jpg);
         color: white;
         margin: 0;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
+        
     }
 
     header {
@@ -44,12 +46,14 @@
         text-align: center;
     }
 
+    /* GRID MAIN */
     .dashboard {
         display: grid;
         grid-template-columns: repeat(3, 260px);
         gap: 25px;
     }
 
+    /* CASES */
     details {
         background: #2a2a2a;
         border-radius: 12px;
@@ -60,55 +64,74 @@
         height: 160px;
     }
 
-    details:hover { transform: scale(1.05); background: #333; }
-    details[open] { height: auto; background: #3a3a3a; }
-
-    summary {
-        list-style: none;
-        padding: 20px;
-        text-align: center;
-        min-height: 160px;
+    details:hover {
+        transform: scale(1.05);
+        background: #333;
     }
 
-    summary::-webkit-details-marker { display: none; }
+    details[open] {
+        height: auto;
+        background: #3a3a3a;
+    }
+
+    /* SUMMARY CENTRÉ PARFAITEMENT */
+    summary {
+        list-style: none;
+        padding: 10px;
+        padding-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;       /* centre horizontalement */
+        justify-content: center;   /* centre verticalement */
+        text-align: center;
+
+        min-height: 160px;
+        gap: 10px; /* espace entre logo et texte */
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
 
     .logo {
-        width: 64px;
-        margin-bottom: 10px;
+        width: 70px;
+        height: 70px;
+        object-fit: contain;
     }
 
     .content {
         padding: 15px;
         border-top: 1px solid #555;
     }
-
     
+     /* Bouton retour haut */
+    .back-to-top {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        background: #3a3a3a;
+        color: white;
+        font-size: 24px;
+        padding: 10px 15px;
+        border-radius: 50%;
+        border: 2px solid #555;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+    .back-to-top:hover {
+        transform: scale(1.15);
+        background: #555;
+    }
 
     /* RESPONSIVE TABLETTE */
-    @media (max-width: 1000px) {
+    @media (max-width: 900px) {
         .dashboard {
             grid-template-columns: repeat(2, 1fr);
         }
-
         summary { min-height: 140px; }
         details { height: 140px; }
-        
-        /* Bouton retour haut */
-        .back-to-top {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: #3a3a3a;
-            color: white;
-            font-size: 24px;
-            padding: 10px 15px;
-            border-radius: 50%;
-            border: 2px solid #555;
-            text-decoration: none;
-            transition: 0.3s;
     }
-        .back-to-top:hover { transform: scale(1.15); background: #555; }
-    }
+
 
     /* RESPONSIVE MOBILE */
     @media (max-width: 600px) {
@@ -116,10 +139,8 @@
             grid-template-columns: repeat(1, 1fr);
             width: 100%;
         }
-
         summary { min-height: 120px; }
         details { height: 120px; }
-
         .header-logo {
             width: 45px;
         }
