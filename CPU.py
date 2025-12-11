@@ -18,5 +18,5 @@ def cpu_info():
     print(f"Utiisation CPU : {cpu_percent}")
 
 
-if __name__ == "__ main __":
+if __name__=="__ main __":
     cpu_info()
