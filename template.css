@@ -1,4 +1,4 @@
-body {
+    body {
         font-family: Arial, sans-serif;
         background: #1e1e1e;
         color: white;
@@ -80,4 +80,45 @@ body {
     .content {
         padding: 15px;
         border-top: 1px solid #555;
+    }
+
+    /* Bouton retour haut */
+    .back-to-top {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        background: #3a3a3a;
+        color: white;
+        font-size: 24px;
+        padding: 10px 15px;
+        border-radius: 50%;
+        border: 2px solid #555;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+    .back-to-top:hover { transform: scale(1.15); background: #555; }
+
+    /* RESPONSIVE TABLETTE */
+    @media (max-width: 900px) {
+        .dashboard {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        summary { min-height: 140px; }
+        details { height: 140px; }
+    }
+
+    /* RESPONSIVE MOBILE */
+    @media (max-width: 600px) {
+        .dashboard {
+            grid-template-columns: repeat(1, 1fr);
+            width: 100%;
+        }
+
+        summary { min-height: 120px; }
+        details { height: 120px; }
+
+        .header-logo {
+            width: 45px;
+        }
     }
