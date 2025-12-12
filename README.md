@@ -22,7 +22,7 @@ pip install psutil
 
 Le script principal se lance depuis le terminal :
 
-python3 monitor.py /chemin/du/dossier
+Depuis VS Code
 
 
 Si aucun dossier n’est précisé, le dossier personnel de l’utilisateur est analysé par défaut.
